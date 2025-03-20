@@ -1,6 +1,18 @@
+import { useRef, useState } from "react";
 import "./Calculator.css";
 
 function Calculator() {
+  let [BMI, setBMI] = useState();
+  let [BMIStatus, setBMIStatus] = useState("");
+
+  const heightFeetInput = useRef(null);
+  const heightInchesInput = useRef(null);
+  const weightInput = useRef(null);
+
+  const calculateBMI = () => {
+    console.log(heightFeetInput.current.value);
+  };
+
   return (
     <div className="container">
       <h2>BMI Calculator</h2>
@@ -8,20 +20,22 @@ function Calculator() {
         <div className="height-input">
           <p>Height</p>
           <div className="inputs">
-            <input type="text" placeholder="feet" />
-            <input type="text" placeholder="inches" />
+            <input type="text" placeholder="feet" ref={heightFeetInput} />
+            <input type="text" placeholder="inches" ref={heightInchesInput} />
           </div>
         </div>
         <div className="weight-input">
           <p>Weight</p>
-          <input type="text" placeholder="pounds" />
+          <input type="text" placeholder="pounds" ref={weightInput} />
         </div>
-        <button className="calculate-btn">Calculate</button>
+        <button className="calculate-btn" onClick={calculateBMI}>
+          Calculate
+        </button>
       </div>
       <div className="display">
         <h2>Your BMI is:</h2>
-        <h1>24</h1>
-        <p>Healthy</p>
+        <h1>{BMI}</h1>
+        <p>{BMIStatus}</p>
       </div>
     </div>
   );
