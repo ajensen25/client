@@ -9,8 +9,22 @@ function Calculator() {
   const heightInchesInput = useRef(null);
   const weightInput = useRef(null);
 
-  const calculateBMI = () => {
-    console.log(heightFeetInput.current.value);
+  const onCalculateClick = () => {
+    if (!heightFeetInput.current.value.trim()) return;
+    if (!heightInchesInput.current.value.trim()) return;
+    if (!weightInput.current.value.trim()) return;
+    // BMI = (weight in pounds) / (height in inches)^2 * 703
+    const heightInInches =
+      parseInt(heightFeetInput.current.value) * 12 +
+      parseInt(heightInchesInput.current.value);
+    const calculatedBMI =
+      Math.round(
+        (parseInt(weightInput.current.value) /
+          (heightInInches * heightInInches)) *
+          703 *
+          10
+      ) / 10;
+    setBMI(calculatedBMI);
   };
 
   return (
@@ -28,7 +42,7 @@ function Calculator() {
           <p>Weight</p>
           <input type="text" placeholder="pounds" ref={weightInput} />
         </div>
-        <button className="calculate-btn" onClick={calculateBMI}>
+        <button className="calculate-btn" onClick={onCalculateClick}>
           Calculate
         </button>
       </div>
