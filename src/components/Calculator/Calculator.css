@@ -1,0 +1,79 @@
+input {
+  width: 5rem;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  padding: 0.2rem;
+  outline: none;
+}
+
+.container {
+  width: 25rem;
+  height: 27rem;
+  background: white;
+  margin: 10rem auto;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container h2 {
+  font-weight: 400;
+}
+
+.container .calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.calculator .height-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.height-input .inputs {
+  display: flex;
+  gap: 1rem;
+}
+
+.calculator .weight-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calculator .calculate-btn {
+  border: none;
+  background: lightblue;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 0.5rem 0;
+}
+
+.container .display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.display h1 {
+  width: 20rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.display p {
+  color: green;
+}
