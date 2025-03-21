@@ -77,3 +77,15 @@ input {
 .display p {
   color: green;
 }
+
+.display p.underweight {
+  color: black;
+}
+
+.display p.overweight {
+  color: rgb(255, 123, 123);
+}
+
+.display p.obesity {
+  color: red;
+}

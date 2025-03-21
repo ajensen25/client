@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./Calculator.css";
 
 function Calculator() {
@@ -8,6 +8,24 @@ function Calculator() {
   const heightFeetInput = useRef(null);
   const heightInchesInput = useRef(null);
   const weightInput = useRef(null);
+
+  useEffect(() => {
+    if (BMI) {
+      findStatus();
+    }
+  }, [BMI]);
+
+  const findStatus = () => {
+    if (BMI < 18.5) {
+      setBMIStatus("Underweight");
+    } else if (BMI >= 18.5 && BMI < 25) {
+      setBMIStatus("Normal");
+    } else if (BMI >= 25 && BMI < 30) {
+      setBMIStatus("Overweight");
+    } else {
+      setBMIStatus("Obesity");
+    }
+  };
 
   const onCalculateClick = () => {
     if (!heightFeetInput.current.value.trim()) return;
@@ -49,7 +67,7 @@ function Calculator() {
       <div className="display">
         <h2>Your BMI is:</h2>
         <h1>{BMI}</h1>
-        <p>{BMIStatus}</p>
+        <p className={BMIStatus.toLowerCase()}>{BMIStatus}</p>
       </div>
     </div>
   );
